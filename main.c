@@ -55,20 +55,22 @@ int start()
 
 void AddNewRecord()
 {
-    char teamName[50];
+    char teamName[50],temp;
     footballTeam t;
     printf("\n----------------------------------------------Enter Team Details---------------------------------------------\n");
     printf("Enter Team Name: ");
-    scanf("%s",&teamName);
-    strcpy(t.name,teamName);
+    scanf("%c",&temp);
+    scanf("%[^\n]",t.name);
     printf("Enter Games played by Team: ");
     scanf("%d",&t.gamesPlayed);
     printf("Enter Games Won by Team: ");
     scanf("%d",&t.gamesWon);
+    printf("Enter Games Lost by Team: ");
+    scanf("%d",&t.gamesLost);
     printf("Enter Games Drawn by Team: ");
     scanf("%d",&t.gamesDrawn);
     t.points = t.gamesWon*3+t.gamesDrawn;
-    printf("you've entered is %s\t%d\t%d\t%d\t%d",t.name,t.gamesPlayed,t.gamesWon,t.gamesLost,t.gamesLost,t.points);//+"\t"+footballTeam.gamesPlayed+"\t"+footballTeam.gamesWon+"\t"+footballTeam.gamesLost+"\t"footballTeam.gamesDrawn+"\t"+footballTeam.points);
+    printf("you've entered is %s\t%d\t%d\t%d\t%d",t.name,t.gamesPlayed,t.gamesWon,t.gamesLost,t.gamesDrawn,t.points);//+"\t"+footballTeam.gamesPlayed+"\t"+footballTeam.gamesWon+"\t"+footballTeam.gamesLost+"\t"footballTeam.gamesDrawn+"\t"+footballTeam.points);
     getch();
 }
 
