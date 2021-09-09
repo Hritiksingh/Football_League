@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1631121281 source:c:\users\hp\desktop\spoj_solutions\footballleague_set4\main.c
+1631187853 source:c:\users\hp\desktop\spoj_solutions\footballleague_set4\main.c
 	<conio.h>
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 

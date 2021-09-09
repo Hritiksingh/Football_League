@@ -1,6 +1,7 @@
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct team
 {
@@ -60,7 +61,7 @@ void AddNewRecord()
     printf("\n----------------------------------------------Enter Team Details---------------------------------------------\n");
     printf("Enter Team Name: ");
     scanf("%c",&temp);
-    scanf("%[^\n]",t.name);
+    scanf("%[^\n]",t.name); // to clear buffer
     printf("Enter Games played by Team: ");
     scanf("%d",&t.gamesPlayed);
     printf("Enter Games Won by Team: ");
@@ -70,8 +71,8 @@ void AddNewRecord()
     printf("Enter Games Drawn by Team: ");
     scanf("%d",&t.gamesDrawn);
     t.points = t.gamesWon*3+t.gamesDrawn;
-    printf("you've entered is %s\t%d\t%d\t%d\t%d",t.name,t.gamesPlayed,t.gamesWon,t.gamesLost,t.gamesDrawn,t.points);//+"\t"+footballTeam.gamesPlayed+"\t"+footballTeam.gamesWon+"\t"+footballTeam.gamesLost+"\t"footballTeam.gamesDrawn+"\t"+footballTeam.points);
-    getch();
+    //printf("you've entered is %s\t%d\t%d\t%d\t%d\t%d\n",t.name,t.gamesPlayed,t.gamesWon,t.gamesLost,t.gamesDrawn,t.points);
+    AddDataInFile(t);
 }
 
 void showFileData()
@@ -96,26 +97,62 @@ void showFileData()
     getch();
 }
 
-void AddDataInFile()
+void AddDataInFile(footballTeam t)
 {
-    FILE *filePointer;
-    char dataToBeWritten[50] = "\nHello guys chae pilo \n usususu garam hai!";
-
-    filePointer = fopen("ScoreBoard.txt","a");
-
-    if( filePointer == NULL)
+    //printf("You have Entered The Following Details for a The Team\nTeam Name\t\tPlayed\t\tWon\t\tLose\t\tDraw\t\tPoints\n%s\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n",t.name,t.gamesPlayed,t.gamesWon,t.gamesLost,t.gamesDrawn,t.points);
+    printf("You have Entered The Following Details for Team -----> %s\n\tPlayed -----> %d\n\tWon --------> %d\n\tLose -------> %d\n\tDraw -------> %d\n\tPoints -----> %d\n",t.name,t.gamesPlayed,t.gamesWon,t.gamesLost,t.gamesDrawn,t.points);
+    printf("Confirm with pressing 1 to add to file : ");
+    int choice_2;
+    scanf("%d",&choice_2);
+    if(choice_2==1)
     {
-        printf("Specified file not found!");
-    }
-    else{
-        if( strlen( dataToBeWritten) > 0)
+        char gP[10],gW[10],gL[10],gD[10],P[10];
+
+        itoa(t.gamesPlayed,gP,10);
+        itoa(t.gamesWon,gW,10);
+        itoa(t.gamesLost,gL,10);
+        itoa(t.gamesDrawn,gD,10);
+        itoa(t.points,P,10);
+
+        char query[100]="";
+        char spacing[10]="\t\t";
+        strcat(query,t.name);
+        strcat(query,spacing);
+        strcat(query,gP);
+        strcat(query,spacing);
+        strcat(query,gW);
+        strcat(query,spacing);
+        strcat(query,gL);
+        strcat(query,spacing);
+        strcat(query,gD);
+        strcat(query,spacing);
+        strcat(query,P);
+
+
+        FILE *filePointer;
+        char dataToBeWritten[50]="\n\t";
+
+        strcat(dataToBeWritten,query);
+
+        filePointer = fopen("ScoreBoard.txt","a");
+
+        if( filePointer == NULL)
         {
-            fputs(dataToBeWritten, filePointer);
-            fputs("\n",filePointer);
+            printf("Specified file not found!");
         }
-        fclose(filePointer);
+        else{
+            if( strlen( dataToBeWritten) > 0)
+            {
+                fputs(dataToBeWritten, filePointer);
+                fputs("\n",filePointer);
+            }
+            fclose(filePointer);
+        }
+        getch();
     }
-    getch();
+    else {
+        return;
+    }
 }
 
 
