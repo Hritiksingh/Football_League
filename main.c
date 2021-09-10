@@ -5,7 +5,7 @@
 
 typedef struct team
 {
-    char name[30];
+    char name[20];
     int gamesPlayed;
     int gamesWon;
     int gamesLost;
@@ -72,7 +72,13 @@ void AddNewRecord()
     scanf("%d",&t.gamesDrawn);
     t.points = t.gamesWon*3+t.gamesDrawn;
     //printf("you've entered is %s\t%d\t%d\t%d\t%d\t%d\n",t.name,t.gamesPlayed,t.gamesWon,t.gamesLost,t.gamesDrawn,t.points);
-    AddDataInFile(t);
+    printf("You have Entered The Following Details for Team -----> %s\n\tPlayed -----> %d\n\tWon --------> %d\n\tLose -------> %d\n\tDraw -------> %d\n\tPoints -----> %d\n",t.name,t.gamesPlayed,t.gamesWon,t.gamesLost,t.gamesDrawn,t.points);
+    printf("Confirm with pressing 1 to add to file : ");
+    int choice_2;
+    scanf("%d",&choice_2);
+    if(choice_2==1){
+        AddDataInFile(t);
+    }
 }
 
 void showFileData()
@@ -100,59 +106,61 @@ void showFileData()
 void AddDataInFile(footballTeam t)
 {
     //printf("You have Entered The Following Details for a The Team\nTeam Name\t\tPlayed\t\tWon\t\tLose\t\tDraw\t\tPoints\n%s\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n",t.name,t.gamesPlayed,t.gamesWon,t.gamesLost,t.gamesDrawn,t.points);
-    printf("You have Entered The Following Details for Team -----> %s\n\tPlayed -----> %d\n\tWon --------> %d\n\tLose -------> %d\n\tDraw -------> %d\n\tPoints -----> %d\n",t.name,t.gamesPlayed,t.gamesWon,t.gamesLost,t.gamesDrawn,t.points);
-    printf("Confirm with pressing 1 to add to file : ");
-    int choice_2;
-    scanf("%d",&choice_2);
-    if(choice_2==1)
+    char gP[10],gW[10],gL[10],gD[10],P[10];
+
+    itoa(t.gamesPlayed,gP,10);
+    itoa(t.gamesWon,gW,10);
+    itoa(t.gamesLost,gL,10);
+    itoa(t.gamesDrawn,gD,10);
+    itoa(t.points,P,10);
+
+    char query[100]="\n\t";
+    char spacing[10]="\t\t";
+    strcat(query,t.name);
+    if(strlen(t.name)<=4)
     {
-        char gP[10],gW[10],gL[10],gD[10],P[10];
-
-        itoa(t.gamesPlayed,gP,10);
-        itoa(t.gamesWon,gW,10);
-        itoa(t.gamesLost,gL,10);
-        itoa(t.gamesDrawn,gD,10);
-        itoa(t.points,P,10);
-
-        char query[100]="";
-        char spacing[10]="\t\t";
-        strcat(query,t.name);
         strcat(query,spacing);
-        strcat(query,gP);
         strcat(query,spacing);
-        strcat(query,gW);
+    }
+    else if(strlen(t.name)<=8)
+    {
         strcat(query,spacing);
-        strcat(query,gL);
+    }
+    else
+    {
         strcat(query,spacing);
-        strcat(query,gD);
-        strcat(query,spacing);
-        strcat(query,P);
+    }
+    strcat(query,gP);
+    strcat(query,spacing);
+    strcat(query,gW);
+    strcat(query,spacing);
+    strcat(query,gL);
+    strcat(query,spacing);
+    strcat(query,gD);
+    strcat(query,spacing);
+    strcat(query,P);
 
 
-        FILE *filePointer;
-        char dataToBeWritten[50]="\n\t";
+    FILE *filePointer;
+    char dataToBeWritten[50]="\t";
 
-        strcat(dataToBeWritten,query);
+    strcat(dataToBeWritten,query);
 
-        filePointer = fopen("ScoreBoard.txt","a");
+    filePointer = fopen("ScoreBoard.txt","a");
 
-        if( filePointer == NULL)
+    if( filePointer == NULL)
+    {
+        printf("Specified file not found!");
+    }
+    else{
+        if( strlen( dataToBeWritten) > 0)
         {
-            printf("Specified file not found!");
+            fputs(dataToBeWritten, filePointer);
+            fputs("\n",filePointer);
         }
-        else{
-            if( strlen( dataToBeWritten) > 0)
-            {
-                fputs(dataToBeWritten, filePointer);
-                fputs("\n",filePointer);
-            }
-            fclose(filePointer);
-        }
-        getch();
+        fclose(filePointer);
     }
-    else {
-        return;
-    }
+    getch();
 }
 
 
