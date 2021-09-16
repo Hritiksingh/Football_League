@@ -1,27 +1,24 @@
 	Name			Games Played	Games Won	Games Lost	Games Drawn	Points
+----------------------------------------------------------------------------------------------------------------------
 	
-	ggdkv		2		2		2		2		8
+	barcelona		5		2		1		2		8
 	
-	cndsnv fvdnv		2		2		2		2		8
+	paracetmol		6		4		1		1		13
 	
-	ekfm		1		1		1		1		4
+	closeup			4		3		0		1		10
 	
-	gmdmgkg kfdkggdg		2		2		2		2		8
+	Badgers			10		5		3		2		17
 	
-	fnsj				4		4		4		4		16
+	Cheetahs		5		3		1		1		10
 	
-	grngnjfngf2		2		2		2		8
+	She Devils		4		1		2		1		4
 	
-	dnfd		3		3		3		2		11
+	Majestics		8		1		7		0		3
 	
-	bfkdbkfdbkld1		1		1		1		4
+	Boilermakers		4		4		0		0		12
 	
-	ewwe				2		2		2		2		8
+	Chippewas		10		9		0		1		28
 	
-	fidkfnsfsdkfm2		2		2		2		8
+	Catamounts		10		10		0		0		30
 	
-	wewww		2		2		2		2		8
-	
-	figmksfsmdksksfdfsdf2		2		2		2		8
-	
-	fhbgkj		2		3		4		5		14
+	Crimson Tide		6		3		2		1		10
