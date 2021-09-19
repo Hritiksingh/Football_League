@@ -200,5 +200,5 @@ void AddDataInFile(footballTeam t)              // writing data into file.
 
 
 /*
-All Rights Reserved for this Project in under HRITIK SINGH and TEAM
+All Rights Reserved for this Project in under HRITIK SINGH
 */
